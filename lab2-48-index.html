@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 20px auto;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #3498db;
+        }
+        
+        main {
+            padding: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        caption {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
+            color: #2c3e50;
+            padding: 10px 0;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            width: 20%;
+        }
+        
+        .section-title {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 1.3rem;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            color: #3498db;
+            width: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .project-desc {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .self-evaluation {
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .contact-info i {
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            th, td {
+                display: block;
+                width: 100%;
+            }
+            
+            th {
+                background-color: #2c3e50;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>个人简历</h1>
+            <div class="subtitle"></div>
+            <div class="photo">
+                <img src="image\6666666.jpg" width='200px' height='200px' alt="头像">
+                
+            </div>
+        </header>
+        
+        <main>
+            <table>
+                <caption>基本信息</caption>
+                <tr>
+                    <th>姓名</th>
+                    <td>骆彗雨</td>
+                    <th>性别</th>
+                    <td>女</td>
+                </tr>
+                <tr>
+                    <th>出生日期</th>
+                    <td>2006年12月06日</td>
+                    <th>学历</th>
+                    <td>本科</td>
+                </tr>
+                <tr>
+                    <th>专业</th>
+                    <td colspan="3">计算机科学与技术</td>
+                </tr>
+                <tr>
+                    <th>联系电话</th>
+                    <td>16665356760</td>
+                    <th>电子邮箱</th>
+                    <td>1876794974@qq.com</td>
+                </tr>
+            </table>
+            
+            <table>
+                <caption>教育背景与项目经历</caption>
+                <tr>
+                    <th rowspan="2">教育背景</th>
+                    <td colspan="3"><strong>鲁东大学</strong> - 计算机科学与技术专业 (2020年9月 - 2024年6月)</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <strong>主修课程：</strong> 数据结构、算法设计、操作系统、计算机网络、数据库系统、人工智能、软件工程
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="3">项目经历</th>
+                    <td colspan="3" class="project-title">2025年"软件杯"大赛 - 基于深度学习的智能医疗辅助诊断系统</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="project-desc">
+                        <strong>项目描述：</strong> 本项目旨在开发一个基于深度学习的智能医疗辅助诊断系统，能够通过分析医学影像（如X光片、CT扫描等）辅助医生进行疾病诊断。系统采用卷积神经网络(CNN)和迁移学习技术，在肺部疾病和眼部疾病诊断方面取得了显著成果。
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="project-desc">
+                        <strong>我的职责：</strong> 负责数据预处理模块的开发，参与模型训练与优化，设计并实现用户友好的Web界面。使用Python、TensorFlow和Flask框架完成项目核心功能。
+                    </td>
+                </tr>
+            </table>
+            
+            <table>
+                <caption>技能与证书</caption>
+                <tr>
+                    <th>技能证书</th>
+                    <td>
+                        <ol>
+                            <li><i class="fas fa-award icon"></i>全国计算机等级考试四级证书</li>
+                            <li><i class="fas fa-award icon"></i>英语六级证书 (CET-6)</li>
+                            <li><i class="fas fa-award icon"></i>软件设计师中级证书</li>
+                            <li><i class="fas fa-award icon"></i>人工智能工程师认证</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <th>技术技能</th>
+                    <td>
+                        <ol>
+                            <li><i class="fas fa-code icon"></i>编程语言：熟练掌握Python、Java、C++、JavaScript</li>
+                            <li><i class="fas fa-database icon"></i>数据库：MySQL、MongoDB、Redis</li>
+                            <li><i class="fas fa-cloud icon"></i>框架技术：Spring Boot、Flask、React、Vue.js</li>
+                            <li><i class="fas fa-brain icon"></i>人工智能：TensorFlow、PyTorch、Scikit-learn</li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+            
+            <table>
+                <caption>个人兴趣与自我评价</caption>
+                <tr>
+                    <th>兴趣爱好</th>
+                    <td>
+                        <ol>
+                            <li><i class="fas fa-book icon"></i>阅读技术博客与专业书籍</li>
+                            <li><i class="fas fa-laptop-code"></i>参与开源项目贡献</li>
+                            <li><i class="fas fa-microphone"></i>参加辩论赛</li>
+                            
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <th>自我评价</th>
+                    <td class="self-evaluation">
+                        <p>我是一名对计算机科学充满热情的本科生，具备扎实的专业基础和较强的学习能力。在校期间，我不仅保持了优异的学业成绩，还积极参与各类科研项目和竞赛活动，锻炼了自己的实践能力和团队协作精神。</p >
+                        
+                        <p>在技术方面，我热衷于探索前沿技术，特别是人工智能和机器学习领域。通过参与"软件杯"大赛项目，我深入了解了深度学习在医疗领域的应用，并在实践中提升了算法设计、模型优化和系统开发的能力。我善于将理论知识应用于实际问题解决，能够独立完成模块设计、编码实现和系统测试等工作。</p >
+                        
+                        <p>在团队合作中，我能够积极沟通、主动承担责任，与团队成员保持良好的协作关系。我注重细节，追求代码质量和系统性能的优化，习惯编写清晰规范的文档。同时，我也具备较强的时间管理能力，能够高效地完成多项任务。</p >
+                        
+                        <p>除了专业技能，我注重全面发展，通过阅读、运动和音乐等多种方式丰富自己的生活。我相信这些多元化的经历有助于培养创新思维和解决问题的能力。未来，我希望能在一个充满挑战的环境中继续成长，将所学知识应用于实际项目，为社会创造价值。</p >
+                    </td>
+                </tr>
+            </table>
+        </main>
+        
+        <footer>
+            <p>© 2024 个人简历 | 实验室成员顺序号 01</p >
+            <div class="contact-info">
+                <div><i class="fas fa-phone"></i> 138-xxxx-xxxx</div>
+                <div><i class="fas fa-envelope"></i> zhangming@example.com</div>
+                <div><i class="fas fa-map-marker-alt"></i> 北京市海淀区XX大学</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
