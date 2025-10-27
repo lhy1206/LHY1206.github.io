@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城 - 网页布局实验</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+       
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 5%;
+            overflow: auto; 
+        }
+        
+        #logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            float: right;
+            list-style: none;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block;
+        }
+        
+        
+        nav ul li:hover {
+            background-color: #3498db;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            overflow: auto;
+        }
+        
+        
+        .left-sidebar, .right-sidebar {
+            width: 20%;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        
+        .content {
+            width: 58%;
+            margin: 0 1%;
+            float: left;
+        }
+        
+        .left-sidebar {
+            float: left;
+            position: relative; 
+            top: 10px; 
+        }
+        
+        .right-sidebar {
+            float: right;
+        }
+        
+        
+        .hot-books, .new-books {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        
+        .book-item {
+            float: left;
+            width: 23%;
+            margin: 0 1% 20px;
+            text-align: center;
+        }
+        
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s;
+        }
+        
+        
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .new-books th, .new-books td {
+            padding: 10px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        
+        .new-books th {
+            background-color: #f8f9fa;
+        }
+        
+        .new-books tr:hover {
+            background-color: #f1f8ff;
+            cursor: pointer;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div id="logo">BookStore</div>
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li>图书分类</li>
+                <li>热门推荐</li>
+                <li>促销活动</li>
+                <li>联系我们</li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <div class="container">
+       
+        <aside class="left-sidebar">
+            <h3>图书分类</h3>
+            <ul>
+                <li>文学小说</li>
+                <li>科学技术</li>
+                <li>经济管理</li>
+                <li>生活艺术</li>
+                <li>少儿读物</li>
+                <li>教育考试</li>
+            </ul>
+        </aside>
+
+       
+        <main class="content">
+            
+            <section class="hot-books">
+                <h2>热门推荐</h2>
+                <div class="book-item">
+                    <img src="1.jpg" alt="三体">
+                    <h4>三体</h4>
+                    <p>¥48.00</p >
+                </div>
+                <div class="book-item">
+                    <img src="2.jpg" alt="活着">
+                    <h4>活着</h4>
+                    <p>¥36.00</p >
+                </div>
+                <div class="book-item">
+                    <img src="3.jpg" alt="时间简史">
+                    <h4>时间简史</h4>
+                    <p>¥56.00</p >
+                </div>
+                <div class="book-item">
+                    <img src="4.jpg" alt="人类简史">
+                    <h4>人类简史</h4>
+                    <p>¥68.00</p >
+                </div>
+                <div style="clear: both;"></div>
+            </section>
+
+          
+            <section class="new-books">
+                <h2>新书上市</h2>
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                        <th>出版日期</th>
+                    </tr>
+                    <tr>
+                        <td>未来简史</td>
+                        <td>尤瓦尔·赫拉利</td>
+                        <td>¥78.00</td>
+                        <td>2025-10-15</td>
+                    </tr>
+                    <tr>
+                        <td>算法之美</td>
+                        <td>布莱恩·克里斯汀</td>
+                        <td>¥65.00</td>
+                        <td>2025-10-10</td>
+                    </tr>
+                    <tr>
+                        <td>深度学习入门</td>
+                        <td>斋藤康毅</td>
+                        <td>¥89.00</td>
+                        <td>2025-10-05</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+
+        
+        <aside class="right-sidebar">
+            <h3>促销信息</h3>
+            <div style="padding: 10px; background-color: #fff8e1; margin-bottom: 15px;">
+                <h4>双十一预热</h4>
+                <p>全场图书满100减20</p >
+                <p>活动时间：11.1-11.11</p >
+            </div>
+            <div style="padding: 10px; background-color: #e3f2fd; margin-bottom: 15px;">
+                <h4>新会员专享</h4>
+                <p>注册即送¥15优惠券</p >
+            </div>
+            <div style="padding: 10px; background-color: #f1f8e9;">
+                <h4>限时特惠</h4>
+                <p>精选图书5折起</p >
+                <p>仅限今日</p >
+            </div>
+        </aside>
+    </div>
+</body>
+</html>
