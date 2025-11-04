@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城 - 交互增强版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding-top: 80px;/
+        }
+
+         header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 5%;
+            overflow: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+        
+        #logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            float: right;
+            list-style: none;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block;
+        }
+        
+        nav ul li:hover {
+            background-color: #3498db;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            overflow: auto; 
+        }
+         .left-sidebar, .right-sidebar {
+            width: 20%;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+       
+        .content {
+            width: 58%;
+            margin: 0 1%;
+            float: left;
+        }
+        
+        .left-sidebar {
+            float: left;
+            position: relative; 
+            top: 10px; 
+        }
+        
+        .right-sidebar {
+            float: right;
+        }
+        
+       
+        .hot-books, .new-books {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        
+        .book-item {
+            float: left;
+            width: 23%;
+            margin: 0 1% 20px;
+            text-align: center;
+        }
+        
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .book-item:hover img {
+            transform: scale(1.5);
+            z-index: 10;
+            position: relative;
+        }
+        
+        .book-item .buy-option {
+            display: none;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .book-item:hover .buy-option {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+       
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .new-books th, .new-books td {
+            padding: 10px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        
+        .new-books th {
+            background-color: #f8f9fa;
+        }
+        
+        .new-books tr:hover {
+            background-color: #f1f8ff;
+            cursor: pointer;
+        }
+        
+       
+        .filter {
+            margin-top: 20px;
+        }
+        
+        .filter select, .filter button {
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .toast.active {
+            opacity: 1;
+        }
+
+       
+        .loading-mask {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loading-mask.active {
+            display: flex;
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+       
+        .cart-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            font-size: 24px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .back-to-top.active {
+            opacity: 1;
+        }
+
+        
+        @media (max-width: 768px) {
+            .left-sidebar, .content, .right-sidebar {
+                width: 100%;
+                float: none;
+                margin: 10px 0;
+            }
+            
+            .book-item {
+                width: 48%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="loading-mask" id="loadingMask">
+        <div class="loading-spinner"></div>
+        <p style="color:white; margin-top:10px;">加载中...</p>
+    </div>
+
+    
+    <div class="toast" id="toast"></div>
+
+    
+    <header>
+        <div id="logo">BookStore</div>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">图书分类</a></li>
+                <li><a href="#">热门推荐</a></li>
+                <li><a href="#">促销活动</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <div class="cart-float">🛒</div>
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    
+    <div class="container">
+       
+        <aside class="left-sidebar">
+            <h3>图书分类</h3>
+            <ul>
+                <li><a href="#">文学小说</a></li>
+                <li><a href="#">科学技术</a></li>
+                <li><a href="#">经济管理</a></li>
+                <li><a href="#">生活艺术</a></li>
+                <li><a href="#">少儿读物</a></li>
+                <li><a href="#">教育考试</a></li>
+            </ul>
+            <h3>筛选条件</h3>
+            <div class="filter">
+                <select id="category-filter">
+                    <option value="all">全部分类</option>
+                    <option value="fiction">文学小说</option>
+                    <option value="section">科学技术</option>
+                    <option value="economy">经济管理</option>
+                    <option value="art">生活艺术</option>
+                    <option value="children">少儿读物</option>
+                </select>
+                <select id="price-filter">
+                    <option value="all">全部价格</option>
+                    <option value="0-50">0-50元</option>
+                    <option value="50-100">50-100元</option>
+                </select>
+                <button onclick="filterBooks()">筛选</button>
+            </div>
+        </aside>
+
+        
+        <main class="content">
+            
+            <section class="hot-books">
+                <h2>热门推荐</h2>
+                <div class="book-item">
+                    <img src="图书1.jpg"三体>
+                    <h4>三体</h4>
+                    <p>¥48.00</p>
+                    <div class="buy-option" onclick="showToast('《三体》已加入购物车')">立即购买</div>
+                </div>
+                <div class="book-item">
+                    <img src="图书2.jpg"活着>
+                    <h4>活着</h4>
+                    <p>¥36.00</p>
+                    <div class="buy-option" onclick="showToast('《活着》已加入购物车')">立即购买</div>
+                </div>
+                <div class="book-item">
+                    <img src="图书3.jpg"时间简史">
+                    <h4>时间简史</h4>
+                    <p>¥56.00</p>
+                    <div class="buy-option" onclick="showToast('《时间简史》已加入购物车')">立即购买</div>
+                </div>
+                <div class="book-item">
+                    <img src="图书4.jpg"人类简史">
+                    <h4>人类简史</h4>
+                    <p>¥68.00</p>
+                    <div class="buy-option" onclick="showToast('《人类简史》已加入购物车')">立即购买</div>
+                </div>
+                <div style="clear: both;"></div>
+            </section>
+
+           
+            <section class="new-books">
+                <h2>新书上市</h2>
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                        <th>出版日期</th>
+                    </tr>
+                    <tr onclick="showToast('《未来简史》信息已展开')">
+                        <td>未来简史</td>
+                        <td>尤瓦尔·赫拉利</td>
+                        <td>¥78.00</td>
+                        <td>2025-10-15</td>
+                    </tr>
+                    <tr onclick="showToast('《算法之美》信息已展开')">
+                        <td>算法之美</td>
+                        <td>布莱恩·克里斯汀</td>
+                        <td>¥65.00</td>
+                        <td>2025-10-10</td>
+                    </tr>
+                    <tr onclick="showToast('《深度学习入门》信息已展开')">
+                        <td>深度学习入门</td>
+                        <td>斋藤康毅</td>
+                        <td>¥89.00</td>
+                        <td>2025-10-05</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+
+        
+        <aside class="right-sidebar">
+            <h3>促销信息</h3>
+            <div style="padding: 10px; background-color: #fff8e1; margin-bottom: 15px;">
+                <h4>双十一预热</h4>
+                <p>全场图书满100减20</p>
+                <p>活动时间：11.1-11.11</p>
+            </div>
+            <div style="padding: 10px; background-color: #e3f2fd; margin-bottom: 15px;">
+                <h4>新会员专享</h4>
+                <p>注册即送¥15优惠券</p>
+            </div>
+            <div style="padding: 10px; background-color: #f1f8e9;">
+                <h4>限时特惠</h4>
+                <p>精选图书5折起</p>
+                <p>仅限今日</p>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+       
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 2000);
+        }
+
+        
+        function filterBooks() {
+            const mask = document.getElementById('loadingMask');
+            mask.classList.add('active');
+            setTimeout(() => {
+                mask.classList.remove('active');
+                showToast('筛选完成！');
+            }, 1500);
+        }
+
+       
+        document.getElementById('backToTop').onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        
+        window.onscroll = () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        };
+
+       
+        window.onload = () => {
+            showToast('页面加载完成，欢迎浏览！');
+        };
+    </script>
+</body>
+</html>
