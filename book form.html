@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书推荐订阅表单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       body {
+            min-height: 100vh; 
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="%23ffffff" fill-opacity="0.1"/><path d="M0 20 L40 20 M20 0 L20 40" stroke="%23999" stroke-width="0.5"/></svg>');
+            background-size: 40px 40px; }
+        form{
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }    
+        
+        .title {
+             text-align: center;
+             margin-bottom: 25px;
+             color: #333;
+         }
+        .part{
+            margin-bottom: 15px;
+
+        } 
+        fieldset{
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        legend {
+            padding: 0 10px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        label {
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input, select, textarea {
+            width: calc(100% - 110px);
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px; 
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: 0 0 0 3px rgba(102, 175, 233, 0.25);
+        }
+        
+        
+        input::placeholder, textarea::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: inline-block;
+            gap:15px;
+            width: calc(100% - 110px);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .radio-group input, .checkbox-group input {
+            width: auto;
+            margin-right: 5px;
+            margin-left: 0;
+        }
+        
+        .radio-group label, .checkbox-group label {
+            width: auto;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        
+        textarea {
+            width: calc(100% - 110px);
+            height: 150px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        input[type="file"] {
+            padding: 5px 0;
+            border: none;
+        }
+        
+        .button-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        input[type="submit"], input[type="reset"] {
+            width: auto;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #428bca;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="reset"] {
+            background-color: #999;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #3071a9;
+        }
+        
+        input[type="reset"]:hover {
+            background-color: #777;
+        }
+       
+  
+
+   </style>
+</head>
+
+<body>
+    <form action="#" method="post" enctype="multipart/form-data">
+            <div class="title"><h1>图书推荐订阅表单</h1></div>
+            <fieldset>
+                <legend>基本信息</legend> 
+                <div class="part">
+                    <label for="user">用户名</label>
+                    <input type="text" name="user" value="" id="user" placeholder="输入用户名字">
+                </div>
+                <div class="part">
+                <label for="word">密码</label>
+                <input type="text" name="word" value="" id="word" placeholder="输入用户密码">
+                </div>
+               <div class="part">
+                <label for="email">邮箱</label>
+                <input type="email" name="email" id="email" placeholder="请输入邮箱" required>
+            </div>
+            <div class="part">
+                <label for="phone">电话</label>
+                <input type="number" name="phone" id="phone" placeholder="请输入电话号码">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>个人偏好</legend>
+            <div class="part">
+                <lable>性别</lable>
+                <div class="radio-group">
+                      <input type="radio" name="gender" value="" id="man">
+                      <label for="man">男</label>
+                      <input type="radio" name="gender" value="" id="gender">
+                      <label for="woman">女</label>
+                </div>
+            </div>
+            <div class="part">
+                 <label>兴趣</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="like" value="literature" id="like1">
+                    <label for="like1">文学类</label>
+                    <input type="checkbox" name="like" value="technology" id="like2">
+                    <label for="like2">科技类</label>
+                    <input type="checkbox" name="like" value="children" id="like3">
+                    <label for="like3">少儿类</label>
+                    <input type="checkbox" name="like" value="comprehensive" id="like4">
+                    <label for="like4">综合类</label>
+                </div>
+            <div class="part">
+                <label for="city">城市</label>      
+                <select id="city" name="city">
+                     <option value="北京">北京</option>
+                     <option value="上海">上海</option>
+                     <option value="山东">山东</option>
+                     <option value="湖南">湖南</option>
+                     <option value="湖北">湖北</option>
+                     <option value="江苏">江苏</option>
+                     <option value="福建">福建</option>
+                     <option value="贵州">贵州</option>
+                     <option value="内蒙古">内蒙古</option>
+                </select> 
+            </div>
+            <div class="part">
+                <label for="booktype">图书分类:</label>
+                  <select id ="booktype"  name="booktype" >
+                    <option value="文学小说">文学小说</option>
+                    <option value="经管职场">经管职场</option>
+                    <option value="社科人文">社科人文</option>
+                    <option value="生活实用">生活实用</option>
+                    <option value="少儿图书">生活图书</option>
+                    <option value="艺术设计">艺术设计</option>
+                    <option value="期刊杂志">期刊杂志</option>
+                  </select>
+            </div>
+             <div class="part">
+                <label for="subscribe-date">订阅日期</label>
+                <input type="date" name="subscribe-date" id="subscribe-date">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>其他信息</legend>
+            <div class="part">
+                <label for="feedback">留言：</label><br>
+                <textarea id="feedback" name="userFeedback" rows="5"cols="40" placeholder="请描述您的建议或意见..." required maxlength="500"></textarea>
+            </div>
+            <div class="part">
+                <label for="avatar">上传头像：</label>
+                 <input type="file" id="avatar" name="avatar" accept="image/*">
+            </div>
+             <div class="part">
+                <label for="personal-site">个人网站</label>
+               <input type="url" name="personal-site" id="personal-site" placeholder="https://">
+            </div>
+        </fieldset>
+        <div class="button-group">
+                <input type="submit" value="提交">
+                <input type="reset" value="重置">
+        </div>
+        </form>  
+</body>
+
+</html>
